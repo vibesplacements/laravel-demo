@@ -38,6 +38,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, Product::rules());
+
         $input = $this->processImages($request);
         
         Product::create($input);
@@ -96,6 +98,7 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, Product::rules());
         $item = Product::findOrFail($id);
         $input = $this->processImages($request);
         $item->update($input);

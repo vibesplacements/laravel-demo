@@ -87,9 +87,17 @@ function renderBoolColumn(tableauID, boolClass) {
         $( ".category-form #slug" ).val(slug);
     });
 
-    $(function () {
-        CKEDITOR.replace('editor1')
-        $('.textarea').wysihtml5();
+    $( ".product-form #product_title" ).blur(function() {
+        var title = $(this).val();
+        var slug = title.replace(/\s/g , "-").toLowerCase();
+        $( ".product-form #slug" ).val(slug);
     });
+
+    if($(".product-form").length > 0) {
+        $(function () {
+            CKEDITOR.replace('editor1')
+            $('.textarea').wysihtml5();
+        });
+    }
 
 })(jQuery);

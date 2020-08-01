@@ -12,10 +12,11 @@
 {!! Form::textarea('description',null,['id'=>'editor1']) !!}
 {!! Form::mySelect('status', 'Status', $status) !!}
 <div class="form-group">
-    <label for="status">Categories</label>
+    <label for="status">Categories</label><br/>
     @if($all_categories)
     @foreach ($all_categories as $category) 
     {!! Form::checkbox('categories[]', $category->id,null) !!} {{ $category->title }}
+    <br/>
     @endforeach
     @endif
 </div>

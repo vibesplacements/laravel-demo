@@ -29,4 +29,15 @@ class Product extends Model
         return ($value)?explode(',', $value):null;
     }
 
+    public static function rules()
+    {
+        $commun = [
+            'product_title' => 'required|min:2',
+            'slug' => 'required|min:2',
+            'categories' => 'required',
+        ];
+        return $commun;
+    }
+
+
 }

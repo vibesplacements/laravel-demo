@@ -29,7 +29,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>L</b>55</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Laravel </b> 5.5</span>
+                <span class="logo-lg"><b>Laravel Practical</span>
             </a>
 
             <!-- Header Navbar -->

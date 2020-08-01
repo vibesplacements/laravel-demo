@@ -38,6 +38,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, Category::rules());
+        
         Category::create($request->all());
 
         //return back()->withSuccess(trans('app.success_store'));
@@ -77,6 +79,7 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, Category::rules());
         $item = Category::findOrFail($id);
         $item->update($request->all());
         //return back()->withSuccess(trans('app.success_update'));

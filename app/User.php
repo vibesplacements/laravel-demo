@@ -65,13 +65,20 @@ class User extends Authenticatable
     {
         return config('variables.role')[$this->attributes['role']];
     }
-public function generateToken()
+
+    /**
+      * Generate Token
+      *
+      * $return string
+      */
+    public function generateToken()
     {
         $this->api_token = str_random(60);
         $this->save();
 
         return $this->api_token;
     }
+
     /**
       * Find out if user has a specific role
       *

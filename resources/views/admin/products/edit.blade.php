@@ -9,6 +9,7 @@
   <div class="col-sm-12">
     <div class="box" style="border:1px solid #d2d6de;">
         {!! Form::model($item, [
+                'class' => 'product-form',
                 'action' => ['ProductsController@update', $item->id],
                 'method' => 'put',
                 'files' => true
