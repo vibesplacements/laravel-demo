@@ -23,9 +23,10 @@ class ApiController extends Controller
     }
     
     public function auth(Request $request){
-        if (auth()->guard()->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
-            $token = base64_encode($request->get('email').':'.$request->get('password'));
+        $crendential = $this->credentials($request);
+        if (auth()->guard()->attempt($crendential)) {
             $user = auth()->user();
+            $token = base64_encode($user->email.':'.$request->get('password'));
             $data = [
                 'token' => $token,
                 'first_name' => $user->first_name,
@@ -37,5 +38,13 @@ class ApiController extends Controller
             $data = ['message' => 'Invalid email or password or inactive user', 'code' => 401];
         }
         return $this->rest->single($data)->render();
+    }
+
+    protected function credentials(Request $request)
+    {
+        if(is_numeric($request->get('email'))){
+            return ['phone'=>$request->get('email'),'password'=>$request->get('password')];
+        }
+        return $request->only('email', 'password');
     }
 }

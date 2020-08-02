@@ -89,16 +89,6 @@ class User extends Authenticatable
         return in_array($this->rolename(), explode("|", $roles));
      }
 
-//    /*
-//    |------------------------------------------------------------------------------------
-//    | Attributes
-//    |------------------------------------------------------------------------------------
-//    */
-//    public function setPasswordAttribute($value='')
-//    {
-//        $this->attributes['password'] = bcrypt($value);
-//    }
-
     public function getAvatarAttribute($value)
     {
         if (!$value) {
@@ -118,16 +108,4 @@ class User extends Authenticatable
     | Boot
     |------------------------------------------------------------------------------------
     */
-//    public static function boot()
-//    {
-//        parent::boot();
-//        static::updating(function($user)
-//        {
-//            $original = $user->getOriginal();
-//
-//            if (\Hash::check('', $user->password)) {
-//                $user->attributes['password'] = $original['password'];
-//            }
-//        });
-//    }
 }
