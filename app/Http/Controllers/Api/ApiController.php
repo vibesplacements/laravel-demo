@@ -17,15 +17,25 @@ class ApiController extends Controller
      *
      * @return Response
      */
-    public function __construct(Restable $rest, Request $request)
+    public function __construct(Restable $rest)
     {
         $this->rest = $rest;
-
-        $this->lang = $request->header('lang', 0);
-
-        if ( ! $request->get('secret') == '12345')
-        {
-            return $this->rest->unauthorized()->render();
+    }
+    
+    public function auth(Request $request){
+        if (auth()->guard()->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
+            $token = base64_encode($request->get('email').':'.$request->get('password'));
+            $user = auth()->user();
+            $data = [
+                'token' => $token,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'email' => $user->email,
+                ];
+            
+        }else{
+            $data = ['message' => 'Invalid email or password or inactive user', 'code' => 401];
         }
+        return $this->rest->single($data)->render();
     }
 }

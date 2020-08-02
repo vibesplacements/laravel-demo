@@ -43,7 +43,7 @@ class CategoriesController extends ApiController
 	 */
 	public function show($id)
 	{
-		$category = Category::where('id', $id)->with('parent')->first();
+		$category = Category::where('id', $id)->first();
 
 		return $this->rest->single($category)->render();
 	}

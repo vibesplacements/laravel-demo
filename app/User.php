@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'phone', 'password', 'role'
+        'first_name', 'last_name', 'email', 'phone', 'password', 'role','api_token'
     ];
 
     /**
@@ -89,15 +89,15 @@ class User extends Authenticatable
         return in_array($this->rolename(), explode("|", $roles));
      }
 
-    /*
-    |------------------------------------------------------------------------------------
-    | Attributes
-    |------------------------------------------------------------------------------------
-    */
-    public function setPasswordAttribute($value='')
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+//    /*
+//    |------------------------------------------------------------------------------------
+//    | Attributes
+//    |------------------------------------------------------------------------------------
+//    */
+//    public function setPasswordAttribute($value='')
+//    {
+//        $this->attributes['password'] = bcrypt($value);
+//    }
 
     public function getAvatarAttribute($value)
     {
@@ -118,16 +118,16 @@ class User extends Authenticatable
     | Boot
     |------------------------------------------------------------------------------------
     */
-    public static function boot()
-    {
-        parent::boot();
-        static::updating(function($user)
-        {
-            $original = $user->getOriginal();
-
-            if (\Hash::check('', $user->password)) {
-                $user->attributes['password'] = $original['password'];
-            }
-        });
-    }
+//    public static function boot()
+//    {
+//        parent::boot();
+//        static::updating(function($user)
+//        {
+//            $original = $user->getOriginal();
+//
+//            if (\Hash::check('', $user->password)) {
+//                $user->attributes['password'] = $original['password'];
+//            }
+//        });
+//    }
 }
