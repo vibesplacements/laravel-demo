@@ -21,7 +21,7 @@
   "dependencies": {
     "admin-lte": "^2.3.11",
     "apidoc": "^0.17.6",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "chosen-js": "^1.8.0",
     "ckeditor": "^4.7.2",
     "datatables": "^1.10.13",
